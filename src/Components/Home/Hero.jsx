@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { CenterFlexContainer,Section } from "../Global";
 import Button from "./Button";
-import bg from "../../Images/hero-bg.png";
+import bg from "../../Images/bgh.PNG";
 
 
 export const HeroText = styled.h1`
@@ -28,7 +28,8 @@ margin: 14px 7px;
 export const HeroContainer = styled(CenterFlexContainer)`
 flex-direction: column;
 max-width:1140px;
-`
+margin-top:80px;
+`;
 
 const Hero = () => {
   return (

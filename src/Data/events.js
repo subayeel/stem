@@ -1,0 +1,26 @@
+export const events = [
+    {
+        eventId:1,
+        title:"",
+        imageUrl:"",
+        route:"/stem/event/1"
+    },
+    {
+        eventId:2,
+        title:"",
+        imageUrl:"",
+        route:"/stem/event/2"
+    },
+    {
+        eventId:3,
+        title:"",
+        imageUrl:"",
+        route:"/stem/event/3"
+    },
+    {
+        eventId:1,
+        title:"",
+        imageUrl:"",
+        route:"/stem/event/4"
+    }
+]

@@ -25,9 +25,9 @@ export const StyledButton = styled.button`
 `;
 
 export const BtnText = styled(CenterFlexContainer)`
-  color: #ce7d1e;
+  color: #CD5623;
   margin: 2px;
-  border: 1px solid #ce7d1e;
+  border: 2px solid #CD5623;
 `;
 
 export const Text = styled.p`
