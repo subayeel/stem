@@ -1,0 +1,55 @@
+import React from "react";
+import styled from "styled-components";
+import { CenterFlexContainer,Section } from "../Global";
+import Button from "./Button";
+import bg from "../../Images/hero-bg.png";
+
+
+export const HeroText = styled.h1`
+  font-size: 56px;
+  font-family: Marcellus SC;
+  font-weight: 700;
+  color: #fff;
+`;
+export const Desc = styled.p`
+  margin: 0;
+  font-size: 18px;
+  color: #eee;
+  max-width:600px;
+  text-align: center;
+`;
+
+export const ButtonContainer = styled(CenterFlexContainer)`
+margin: 14px 7px;
+@media screen and (max-width:768px){
+  flex-direction:column;
+}
+`
+export const HeroContainer = styled(CenterFlexContainer)`
+flex-direction: column;
+max-width:1140px;
+`
+
+const Hero = () => {
+  return (
+    <>
+    <Section style={{ backgroundImage: `url(${bg})` }}>
+    <HeroContainer>
+    <HeroText>Stem- 2022</HeroText>
+      <Desc>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ex rem
+        molestias, quidem repellat repudiandae est quasi doloremque assumenda
+        sed!
+      </Desc>
+      <ButtonContainer>
+        <Button text="Register"></Button>
+        <Button text="Events"></Button>
+          
+      </ButtonContainer>
+    </HeroContainer>
+      </Section>
+    </>
+  );
+};
+
+export default Hero;
