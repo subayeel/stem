@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.93eccaf2.css",
+    "main.js": "/static/js/main.7c950852.js",
+    "static/media/events-bg.mp4": "/static/media/events-bg.4087e9e556141ea39464.mp4",
+    "static/media/hero-bg.png": "/static/media/hero-bg.6cbc3fb9c6296411d292.png",
+    "static/media/bgh.PNG": "/static/media/bgh.751cb6376cea76881be5.PNG",
+    "static/media/MarcellusSC-Regular.ttf": "/static/media/MarcellusSC-Regular.d36eafd3ccb97b75de17.ttf",
+    "index.html": "/index.html",
+    "main.93eccaf2.css.map": "/static/css/main.93eccaf2.css.map",
+    "main.7c950852.js.map": "/static/js/main.7c950852.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93eccaf2.css",
+    "static/js/main.7c950852.js"
+  ]
+}
