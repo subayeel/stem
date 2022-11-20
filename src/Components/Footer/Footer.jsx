@@ -11,20 +11,20 @@ import {
   Desc,
   ImgWrap,
   FooterContainer,
-  FooterWrapper,Links
+  FooterWrapper,
+  Links,
 } from "./Footer.elements";
-
-
 
 const Footer = () => {
   return (
     <FooterContainer>
       <FooterWrapper>
         <Row justify="space-between">
-          <div>
-            <Links to="/">Contact us </Links>| <Links to="/">Forum</Links>
+          <div className="m-4">
+            <Links to="/">Contact us </Links>
+            <Links>|</Links> <Links to="/">Forum</Links>
           </div>
-          <div>
+          <div className="m-4">
             <FooterFacebookIcon />
             <FooterInstagramIcon />
             <FooterTwitterIcon />
@@ -44,7 +44,8 @@ const Footer = () => {
         </ImgWrap>
         <TextWrap>
           <Desc>
-            Anjuman Institute of Technology and Management, <br></br>Bhatkal - 581320
+            Anjuman Institute of Technology and Management, <br></br>Bhatkal -
+            581320
           </Desc>
         </TextWrap>
       </FooterWrapper>

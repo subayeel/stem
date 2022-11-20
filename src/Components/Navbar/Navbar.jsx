@@ -63,7 +63,8 @@ const navbar = useRef()
             </NavbarItems>
             
             {isAuth ? (
-              ""
+            <Avatar imageUrl="https://www.w3schools.com/howto/img_avatar.png" />
+              
             ) : (
               <>
                 <NavbarItems to="/stem/login">
@@ -90,7 +91,6 @@ const navbar = useRef()
             ) : (
               ""
             )}
-            <Avatar imageUrl="https://www.w3schools.com/howto/img_avatar.png" />
           </NavbarElements>
         </NavbarWrapper>
       </NavbarContainer>

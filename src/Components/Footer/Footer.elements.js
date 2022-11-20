@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export const FooterContainer = styled.footer`
   max-width: 100%;
   padding: 14px 0;
-  
+
   background-color: #cd5623;
 `;
 
@@ -33,6 +33,10 @@ export const FooterYoutubeIcon = styled(FaYoutubeSquare)`
     transition: 0.25s;
     transform: scale(1.6, 1.6);
   }
+  @media screen and (max-width: 768px) {
+    height: 32px;
+    width: 32px;
+  }
 `;
 export const FooterTwitterIcon = styled(FaTwitterSquare)`
   height: 20px;
@@ -44,6 +48,10 @@ export const FooterTwitterIcon = styled(FaTwitterSquare)`
 
     transition: 0.25s;
     transform: scale(1.6, 1.6);
+  }
+  @media screen and (max-width: 768px) {
+    height: 32px;
+    width: 32px;
   }
 `;
 export const FooterInstagramIcon = styled(FaInstagramSquare)`
@@ -57,6 +65,10 @@ export const FooterInstagramIcon = styled(FaInstagramSquare)`
     transition: 0.25s;
     transform: scale(1.6, 1.6);
   }
+  @media screen and (max-width: 768px) {
+    height: 32px;
+    width: 32px;
+  }
 `;
 export const FooterFacebookIcon = styled(FaFacebookSquare)`
   height: 20px;
@@ -68,6 +80,11 @@ export const FooterFacebookIcon = styled(FaFacebookSquare)`
 
     transition: 0.25s;
     transform: scale(1.6, 1.6);
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 32px;
+    width: 32px;
   }
 `;
 
@@ -109,4 +126,5 @@ export const Desc = styled.p`
 
 export const Links = styled(Link)`
   color: #eee;
+  text-decoration: none;
 `;
