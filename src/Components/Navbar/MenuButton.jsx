@@ -4,8 +4,11 @@ import { FaClipboardList, FaTimes } from "react-icons/fa";
 
 import { CenterFlexContainer } from "../Global";
 
+
+
 export const MenuButtonContainer = styled(CenterFlexContainer)`
-  position: fixed;
+  display: none;
+  position: absolute;
   bottom: 32px;
   right: 32px;
   z-index: 2;
@@ -13,20 +16,25 @@ export const MenuButtonContainer = styled(CenterFlexContainer)`
   height: 60px;
   background-color: #ce7d1e;
   border-radius: 50px;
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
 `;
 
 export const MenuIcon = styled(FaClipboardList)`
   color: #fff;
   height: 40px;
+  margin: auto;
 `;
 export const CloseIcon = styled(FaTimes)`
   color: #fff;
   height: 40px;
+  margin: auto;
 `;
 const MenuButton = ({ isOpen, toggle }) => {
   return (
     <MenuButtonContainer onClick={toggle}>
-      {isOpen ? <CloseIcon /> : <MenuIcon />}
+     {isOpen ? <CloseIcon /> : <MenuIcon />}
     </MenuButtonContainer>
   );
 };
