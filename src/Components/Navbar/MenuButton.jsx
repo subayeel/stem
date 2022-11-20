@@ -8,7 +8,7 @@ import { CenterFlexContainer } from "../Global";
 
 export const MenuButtonContainer = styled(CenterFlexContainer)`
   display: none;
-  position: absolute;
+  position: fixed;
   bottom: 32px;
   right: 32px;
   z-index: 2;
