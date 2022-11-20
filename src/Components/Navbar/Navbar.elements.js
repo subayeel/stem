@@ -9,7 +9,7 @@ export const NavbarContainer = styled.nav`
   position:fixed;
   width: 100%;
   transition: top 0.3s; 
-  top:0;z-index: 999;
+  top:0;z-index: 10;
 `;
 export const NavbarWrapper = styled(CenterFlexContainer)`
   max-width: 1140px;

@@ -61,12 +61,7 @@ const navbar = useRef()
                 isActive={location.pathname === "/stem/events" ? "active" : ""}
               ></ListItem>
             </NavbarItems>
-            <NavbarItems to="/stem/about">
-              <ListItem
-                title="About"
-                isActive={location.pathname === "/stem/about" ? "active" : ""}
-              ></ListItem>
-            </NavbarItems>
+            
             {isAuth ? (
               ""
             ) : (

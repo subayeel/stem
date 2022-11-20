@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { CenterFlexContainer } from "../Global";
 
-export const StyledButton = styled.button`
+export const StyledButton = styled(Link)`
   background-color: #534b48;
   margin:5px 23px;
   outline: none;
@@ -25,7 +26,7 @@ export const StyledButton = styled.button`
 `;
 
 export const BtnText = styled(CenterFlexContainer)`
-  color: #CD5623;
+  color: #eee;
   margin: 2px;
   border: 2px solid #CD5623;
 `;
@@ -34,9 +35,9 @@ export const Text = styled.p`
   margin: 0;
   padding: 5px 23px;
 `;
-const Button = ({text}) => {
+const Button = ({text,link}) => {
   return (
-    <StyledButton>
+    <StyledButton to={link}>
       <BtnText>
         <Text>{text}</Text>
       </BtnText>

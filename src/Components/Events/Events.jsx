@@ -10,7 +10,7 @@ export const VideoBg = styled.video`
   position: absolute;
   top: 0;
   left: 0;
-
+  padding-bottom: -100px;
   min-height: 100%;
   min-width: 100%;
 
@@ -29,7 +29,7 @@ export const Content = styled(CenterFlexContainer)`
   background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;
   width: 100%;
-  height: 100%;
+  height: 115%;
   justify-content: space-around;
   flex-direction: column;
 `;
@@ -62,7 +62,7 @@ const Events = () => {
   }
   return (
     <>
-      <Section>
+      <Section >
         <VideoBg autoPlay muted loop>
           <source src={vidbg} type="video/mp4" />
         </VideoBg>

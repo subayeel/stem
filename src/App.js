@@ -20,9 +20,10 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import Home from "./Components/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
-import RegisterPage from "./Components/RegisterPage/RegisterPage";
 import LoginSection from "./Components/RegisterPage/Login";
 import SignUp from "./Components/RegisterPage/SignUp";
+import Sidebar from "./Components/Navbar/Sidebar";
+import MenuButton from "./Components/Navbar/MenuButton";
 
 function App() {
   //function of scroll to top
@@ -57,8 +58,9 @@ function App() {
         <Wrapper>
           {" "}
           <AuthProvider>
-            {/* <Sidebar isOpen={isOpen} toggle={toggle} /> */}
+            <Sidebar isOpen={isOpen} toggle={toggle} />
             <Navbar />
+            <MenuButton isOpen={isOpen} toggle={toggle} />
 
             <Routes>
               <Route path="/stem" element={<Home />} />
