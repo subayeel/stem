@@ -1,17 +1,19 @@
 {
   "files": {
     "main.css": "/stem/static/css/main.883b29b4.css",
-    "main.js": "/stem/static/js/main.91c8243f.js",
+    "main.js": "/stem/static/js/main.96874cc6.js",
+    "static/media/login-bg.mp4": "/stem/static/media/login-bg.276bd6728a5efb4864e6.mp4",
     "static/media/events-bg.mp4": "/stem/static/media/events-bg.4087e9e556141ea39464.mp4",
     "static/media/hero-bg.png": "/stem/static/media/hero-bg.6cbc3fb9c6296411d292.png",
     "static/media/bgh.PNG": "/stem/static/media/bgh.751cb6376cea76881be5.PNG",
+    "static/media/aitm.png": "/stem/static/media/aitm.a20c6a9632a586f39d13.png",
     "static/media/MarcellusSC-Regular.ttf": "/stem/static/media/MarcellusSC-Regular.d36eafd3ccb97b75de17.ttf",
     "index.html": "/stem/index.html",
     "main.883b29b4.css.map": "/stem/static/css/main.883b29b4.css.map",
-    "main.91c8243f.js.map": "/stem/static/js/main.91c8243f.js.map"
+    "main.96874cc6.js.map": "/stem/static/js/main.96874cc6.js.map"
   },
   "entrypoints": [
     "static/css/main.883b29b4.css",
-    "static/js/main.91c8243f.js"
+    "static/js/main.96874cc6.js"
   ]
 }
