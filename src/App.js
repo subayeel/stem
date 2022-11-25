@@ -6,7 +6,7 @@ import {
   Outlet,
   useLocation,
 } from "react-router-dom";
-import { useLayoutEffect, useState, useEffect } from "react";
+import { useLayoutEffect, useState, useEffect, useRef } from "react";
 import { GlobalStyle } from "./Components/Global";
 
 //auth imports
@@ -20,12 +20,15 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import Home from "./Components/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
-import LoginSection from "./Components/RegisterPage/Login";
-import SignUp from "./Components/RegisterPage/SignUp";
+import LoginSection from "./Components/Auth/Login";
+import SignUp from "./Components/Auth/SignUp";
 import Sidebar from "./Components/Navbar/Sidebar";
 import MenuButton from "./Components/Navbar/MenuButton";
+import Profile from "./Components/User/Profile";
 
 function App() {
+  
+
   //function of scroll to top
   const Wrapper = ({ children }) => {
     const location = useLocation();
@@ -40,6 +43,8 @@ function App() {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
+  
 
   //theme
   const theme = {
@@ -58,9 +63,8 @@ function App() {
         <Wrapper>
           {" "}
           <AuthProvider>
-            <Sidebar isOpen={isOpen} toggle={toggle} />
-            <Navbar />
-            <MenuButton isOpen={isOpen} toggle={toggle} />
+            <Navbar isOpen={isOpen} toggle={toggle}  />
+            {/* <MenuButton isOpen={isOpen} toggle={toggle} /> */}
 
             <Routes>
               <Route path="/stem" element={<Home />} />
@@ -68,6 +72,7 @@ function App() {
               <Route path="/stem/login" element={<LoginSection />} />
               <Route path="/stem/event/:event" element={<Home />} />
               <Route path="/stem/profile/:id" element={<Home />} />
+              <Route path="/stem/profile" element={<Profile />} />
             </Routes>
             <Outlet />
             <Footer />

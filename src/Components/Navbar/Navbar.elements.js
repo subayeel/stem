@@ -1,31 +1,39 @@
 import styled from "styled-components";
 import { CenterFlexContainer } from "../Global";
-import { FaAngleRight, FaBars, FaTimes } from "react-icons/fa";
+import { FaAngleRight, FaBars, FaHome, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.nav`
   margin: 0 auto;
-  background-color: rgba(14,14,14,0.8);
-  position:fixed;
+  background-color: rgb(15,17,40);
+  position: fixed;
   width: 100%;
-  transition: top 0.3s; 
-  top:0;z-index: 10;
+  transition: top 0.3s;
+  top: 0;
+  z-index: 10;
 `;
 export const NavbarWrapper = styled(CenterFlexContainer)`
   max-width: 1140px;
-  
+
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 56px;
-  padding: 0 15px;
-  @media screen and (max-width:768px){
-    margin: 0;
+  margin: 0 auto;
+  /* padding: 0 15px; */
+  @media screen and (max-width: 768px) {
+    margin: 0 14px;
   }
 `;
 
-export const LogoContainer = styled(CenterFlexContainer)`
+export const LogoContainer = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    cursor: pointer;
+  }
   @media screen and (max-width: 768px) {
     margin: auto;
   }
@@ -37,8 +45,6 @@ export const NavbarElements = styled.div`
 
   text-decoration: none;
   list-style: none;
-
- 
 `;
 
 export const NavbarItems = styled(Link)`
@@ -78,11 +84,10 @@ export const Dots = styled.p`
 `;
 
 //avatar
-export const AvatarContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
- 
+export const AvatarContainer = styled(CenterFlexContainer)`
+  margin: 20px 0;
+  height: 36px;
+  width:36px;
   &:hover {
     cursor: pointer;
   }
@@ -113,7 +118,6 @@ export const AvatarImg = styled.img`
 
 //sidebar
 export const MobileIcon = styled(CenterFlexContainer)`
-  
   width: 36px;
   display: none;
   height: 100%;
@@ -132,6 +136,14 @@ export const BarsIcon = styled(FaBars)`
   }
 `;
 
+export const HomeIcon = styled(FaHome)`
+  color: ${(props) => (props.isHome ? "#CE7B1F" : "#fff")};
+
+  &:hover {
+    color: #ccc;
+  }
+`;
+
 export const CloseIcon = styled(FaTimes)`
   color: #1b1a55;
   width: 22px;
@@ -145,5 +157,61 @@ export const CloseIcon = styled(FaTimes)`
   @media screen and (max-width: 768px) {
     width: 18px;
     height: 18px;
+  }
+`;
+
+export const ProfileDropdown = styled.div`
+  display: ${(props) => (props.state ? "block" : "none")};
+  position: absolute;
+  padding-top: 7px;
+  right: 0;
+  top: 80px;
+  width: 240px;
+  z-index: 12;
+
+  /* margin-left: ${(props) => props.lmargin}; */
+  background-color: rgba(14, 14, 14, 0.8);
+
+  @media screen and (max-width: 768px) {
+    right: 0;
+    top: 80px;
+    width: 160px;
+  }
+`;
+
+export const NavDropDown = styled.span`
+  display: flex;
+  justify-content: space-around;
+  color: #fff;
+  text-decoration: none;
+  align-items: center;
+  margin: 0;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  font-weight: ${(props) => props.state};
+
+  &:hover {
+    color: #ccc;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+`;
+
+export const DropdownItem = styled.div`
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  padding: 5px 7px;
+  background-color: rgba(14, 14, 14, 0.2);
+  color: #eee;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(14, 14, 14, 1);
+    color: #eee;
+
+    > a {
+      color: #c57d1b;
+    }
   }
 `;

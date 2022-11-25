@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -8,15 +8,14 @@ import ListItem from "./ListItem";
 import { FaTimes } from "react-icons/fa";
 
 export const MenuContainer = styled.div`
-  position: absolute;
-  top: 0;
+  position: fixed;
+  width: 100vw;
+  top: ${(props) => (props.isOpen ? "80px" : "-280px")};
   
-  left:${(props)=>props.isOpen ?"0":"-200px"};
-  height: 100vh;
-  z-index: 11;
-  width: 200px;
+  height: 200px;
+  z-index: 10;
   background-color: rgba(14, 14, 14, 0.8);
-  transition: left 1s;
+  transition: top 0.3s;
 `;
 
 export const MenuWrapper = styled(CenterFlexContainer)`
@@ -24,12 +23,12 @@ export const MenuWrapper = styled(CenterFlexContainer)`
 `;
 
 export const ModalHeader = styled.div`
-  display: flex;
+  display: grid;
+  place-content: center;
   width: 100%;
   padding: 0 7px;
   margin: 0;
   color: #fff;
-  justify-content: space-between;
 `;
 
 export const IconContainer = styled(CenterFlexContainer)`
@@ -41,29 +40,25 @@ export const IconContainer = styled(CenterFlexContainer)`
   }
 `;
 
-const Sidebar = ({ toggle,isOpen }) => {
+const Sidebar = ({ toggle, isOpen, menuRef }) => {
   const location = useLocation();
+
   return (
-    <MenuContainer isOpen={isOpen}>
+    <MenuContainer ref={menuRef} isOpen={isOpen}>
       <MenuWrapper>
         <ModalHeader>
-          <h1>Stem 2022</h1>
-          <IconContainer>
-            <FaTimes onClick={toggle}></FaTimes>
-          </IconContainer>
+          <h1>Menu</h1>
         </ModalHeader>
-        <NavbarItems to="/stem">
-          <ListItem
-            title="Home"
-            isActive={location.pathname === "/stem" ? "active" : ""}
-          ></ListItem>
-        </NavbarItems>
-        <NavbarItems to="/stem/events">
-          <ListItem
-            title="Events"
-            isActive={location.pathname === "/stem/events" ? "active" : ""}
-          ></ListItem>
-        </NavbarItems>
+
+        <ListItem
+          title="Home"
+          isActive={location.pathname === "/stem" ? "active" : ""}
+        ></ListItem>
+
+        <ListItem
+          title="Events"
+          isActive={location.pathname === "/stem/events" ? "active" : ""}
+        ></ListItem>
       </MenuWrapper>
     </MenuContainer>
   );

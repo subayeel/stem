@@ -12,7 +12,7 @@ export const FooterContainer = styled.footer`
   max-width: 100%;
   padding: 14px 0;
 
-  background-color: #cd5623;
+  background-color: #0f1128;
 `;
 
 export const FooterWrapper = styled(MainWrapper)`
@@ -125,6 +125,9 @@ export const Desc = styled.p`
 `;
 
 export const Links = styled(Link)`
-  color: #eee;
+  color: #ececec;
   text-decoration: none;
+  &:hover {
+    color: #fff;  
+  }
 `;

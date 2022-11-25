@@ -1,6 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+
+//auth imports
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { app, db } from "../firebase";
+
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const AuthContext = React.createContext();
 
@@ -12,12 +21,58 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
+  const [name, setName] = useState("");
+  const [userEmail, setUseremail] = useState("");
+  const [collegeName, setCollegeName] = useState("");
+  const [stemId, setStemId] = useState("");
+
+  //admin states
+  const [isAdmin, setAdmin] = useState(false);
+
+  //get auth user details
+  const getUserDetails = async (email) => {
+    const userReference = collection(db, "userDetails");
+    // Create a query against the collection.
+    const q = query(userReference, where("userEmail", "==", email));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      setUseremail(email);
+      setName(doc.data().name);
+      setCollegeName(doc.data().collegeName);
+      setStemId(doc.data().stemId);
+     
+    });
+  };
+
+  //check user auth
+  const auth = getAuth(app);
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        if (user.email === "abdullahsubayeel999@gmail.com") {
+          setAdmin(true);
+        } else {
+          setAdmin(false);
+        }
+        // User is signed in.
+        
+        await getUserDetails(user.email);
+      } else {
+        // No user is signed in.
+
+        console.log("no user");
+      }
+    });
+  }, [auth, name]);
+
   function signup(email, password) {
-    return createUserWithEmailAndPassword(auth,email, password);
+    return createUserWithEmailAndPassword(auth, email, password);
   }
 
   function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout() {
@@ -46,6 +101,10 @@ export function AuthProvider({ children }) {
   }, []);
 
   const value = {
+    name,
+    collegeName,
+    stemId,
+    userEmail,
     currentUser,
     login,
     signup,
