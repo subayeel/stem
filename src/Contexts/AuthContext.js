@@ -10,6 +10,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = React.createContext();
 
@@ -25,6 +26,8 @@ export function AuthProvider({ children }) {
   const [userEmail, setUseremail] = useState("");
   const [collegeName, setCollegeName] = useState("");
   const [stemId, setStemId] = useState("");
+
+  const navigate = useNavigate();
 
   //admin states
   const [isAdmin, setAdmin] = useState(false);
@@ -42,7 +45,6 @@ export function AuthProvider({ children }) {
       setName(doc.data().name);
       setCollegeName(doc.data().collegeName);
       setStemId(doc.data().stemId);
-     
     });
   };
 
@@ -57,7 +59,7 @@ export function AuthProvider({ children }) {
           setAdmin(false);
         }
         // User is signed in.
-        
+
         await getUserDetails(user.email);
       } else {
         // No user is signed in.
@@ -76,6 +78,7 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
+    navigate("/stem");
     return auth.signOut();
   }
 

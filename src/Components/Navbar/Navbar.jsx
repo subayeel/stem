@@ -1,6 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Avatar from "./Avatar";
+import MenuButton from "./MenuButton";
 
 import "./Nav.css";
 import {
@@ -16,6 +17,7 @@ import {
   NavDropDown,
   DropdownItem,
   HomeIcon,
+  Logo,
 } from "./Navbar.elements";
 import Sidebar from "./Sidebar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -23,8 +25,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
 
 import ListItem from "./ListItem";
-import navlogo from "../../Images/nav-logo.png"
-
+import navlogo from "../../Images/nav-logo.png";
+import { gsap } from "gsap/all";
 
 export const Links = styled(Link)`
   text-decoration: none;
@@ -33,42 +35,37 @@ export const Links = styled(Link)`
     color: #c57d1b;
   }
 `;
-const Navbar = ({ toggle, isOpen, isAuth, imageUrl, isAdmin }) => {
+function Navbar({  isAdmin }) {
   const location = useLocation();
   const { logout, currentUser } = useAuth();
   const navigate = useNavigate();
 
   const [profileDropdown, setProfileDropDown] = useState(false);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   //navbar hide/show on scroll
 
   const navbar = useRef();
-  const menu = useRef();
 
   var prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
       navbar.current.style.top = "0";
-      if (isOpen) {
-        menu.current.style.top = "80px";
-      }
-    } else {
+    } else if (prevScrollpos <= currentScrollPos && currentScrollPos >= 700) {
       navbar.current.style.top = "-80px";
-      if (isOpen) {
-        menu.current.style.top = "0px";
-      }
     }
+   
     prevScrollpos = currentScrollPos;
   };
   return (
     <>
       <NavbarContainer ref={navbar}>
-        {isOpen ? (
-          <Sidebar menuRef={menu} isOpen={isOpen} toggle={toggle} />
-        ) : (
-          ""
-        )}
+        <MenuButton isOpen={isOpen} toggle={toggle} />
 
         <NavbarWrapper>
           <MobileIcon
@@ -79,19 +76,15 @@ const Navbar = ({ toggle, isOpen, isAuth, imageUrl, isAdmin }) => {
             <HomeIcon isHome={location.pathname === "/stem" ? "active" : ""} />
           </MobileIcon>
           <LogoContainer to="/stem">
-            <img
-              height="36px"
-              src={navlogo}
-              alt="logo"
-            ></img>
+            <Logo src={navlogo} alt="logo"></Logo>
           </LogoContainer>
           <NavbarElements>
-            <NavbarItems to="/stem">
+            {/* <NavbarItems to="/stem">
               <ListItem
                 title="Home"
                 isActive={location.pathname === "/stem" ? "active" : ""}
               ></ListItem>
-            </NavbarItems>
+            </NavbarItems> */}
             {/* <NavbarItems to="/stem/events">
               <ListItem
                 title="Events"
@@ -113,12 +106,8 @@ const Navbar = ({ toggle, isOpen, isAuth, imageUrl, isAdmin }) => {
                   onMouseEnter={() => setProfileDropDown(true)}
                   onMouseLeave={() => setProfileDropDown(false)}
                 >
-                  <DropdownItem onClick={logout}>
-                    <Links>Logout</Links>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <Links to="/stem/profile">Profile </Links>
-                  </DropdownItem>
+                  <DropdownItem to="/stem/profile">Profile</DropdownItem>
+                  <DropdownItem onClick={logout}>Logout</DropdownItem>
                 </ProfileDropdown>
               </>
             ) : (
@@ -149,9 +138,10 @@ const Navbar = ({ toggle, isOpen, isAuth, imageUrl, isAdmin }) => {
             )}
           </NavbarElements>
         </NavbarWrapper>
+        <Sidebar isOpen={isOpen} toggle={toggle} />
       </NavbarContainer>
     </>
   );
-};
+}
 
 export default Navbar;

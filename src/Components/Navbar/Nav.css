@@ -1,8 +1,27 @@
-a.active{
-    font-weight: 700;
-    color: #CE7D1E;
-    
+a.active {
+  font-weight: 700;
+  color: #ce7d1e;
 }
-.active :hover{
-    color: #1b1a55;
+.active :hover {
+  color: #1b1a55;
+}
+
+.navmenu {
+  width: 100vw;
+  top: -280px;
+  overflow: hidden;
+  height: 200px;
+  z-index: 12;
+  background-color: rgba(14, 14, 14, 0.8);
+  transition: 1s;
+}
+
+.navmenu.active {
+  width: 100vw;
+  top: 80px;
+  overflow: hidden;
+  height: 200px;
+  z-index: 12;
+  background-color: rgba(14, 14, 14, 0.8);
+  transition: 1s;
 }

@@ -39,10 +39,7 @@ function App() {
   };
 
   //toggle sidebar
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
+  
 
   
 
@@ -63,8 +60,7 @@ function App() {
         <Wrapper>
           {" "}
           <AuthProvider>
-            <Navbar isOpen={isOpen} toggle={toggle}  />
-            {/* <MenuButton isOpen={isOpen} toggle={toggle} /> */}
+            <Navbar   />
 
             <Routes>
               <Route path="/stem" element={<Home />} />

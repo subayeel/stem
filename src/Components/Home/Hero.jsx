@@ -1,12 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import styled from "styled-components";
-import { CenterFlexContainer, RoundedButton } from "../Global";
+import { CenterFlexContainer, RouteButton } from "../Global";
 
-import { useNavigate } from "react-router-dom";
-import { Img, ImgWrap } from "./Home.elements";
+import { useNavigate, useLocation } from "react-router-dom";
+import { ImgWrap } from "./Home.elements";
 import linebg from "../../Images/lines-bg.svg";
 
-import { gsap, Power3 } from "gsap/all";
+import { gsap } from "gsap/all";
+import { useAuth } from "../../Contexts/AuthContext";
 
 import {
   Desc,
@@ -28,7 +29,7 @@ export const HeroContainer = styled(CenterFlexContainer)`
   height: 90vh;
   overflow: hidden;
   @media screen and (max-width: 768px) {
-    height: 100vh;
+    height: min-content;
   }
 `;
 
@@ -49,14 +50,17 @@ export const OverLay = styled.div`
 
 const Hero = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { currentUser } = useAuth();
+
   let col1 = useRef(null);
   let col2 = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.fromTo(
       col1,
       {
-        x: -1000,
+        x: -2000,
         duration: 2,
       },
       {
@@ -70,13 +74,13 @@ const Hero = () => {
       { duration: 2, ease: "bounce", x: 1000, y: -450 },
       { duration: 2, x: 0, y: 0 }
     );
-  }, []);
+  }, [location.pathname]);
   return (
     <>
       <HeroContainer style={{ backgroundColor: "#0F1128" }}>
-        <OverLay>
+        {/* <OverLay>
           <img style={{ objectFit: "cover" }} src={linebg} alt="" />
-        </OverLay>
+        </OverLay> */}
 
         <InfoWrapper>
           <Column1
@@ -92,7 +96,12 @@ const Hero = () => {
                 institutions, and is recognized as one of the premier
                 educational organizations in South India
               </Desc>
-              <RoundedButton to="/stem/register">Register</RoundedButton>
+
+              {currentUser ? (
+                <RouteButton to="/stem/profile">My Profile</RouteButton>
+              ) : (
+                <RouteButton to="/stem/register">Register</RouteButton>
+              )}
             </TextWrapper>
           </Column1>
           <Column2

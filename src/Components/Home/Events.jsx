@@ -3,7 +3,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { gsap } from "gsap";
 
 import { events } from "../../Data/events";
-import {RoundedButton,} from "../Global";
+import {RouteButton,} from "../Global";
 import {
   EventCard,
   Title,
@@ -43,10 +43,10 @@ const Events = () => {
         </ImgWrap>
         {/* <Title>{props.title}</Title> */}
         <Desc style={{ maxWidth: "400px" }}>{props.desc}</Desc>
-        <RoundedButton id="">
+        <RouteButton>
           Learn More
           <FaArrowRight style={{ marginLeft: "4px" }} />
-        </RoundedButton>
+        </RouteButton>
       </EventCard>
     );
   }

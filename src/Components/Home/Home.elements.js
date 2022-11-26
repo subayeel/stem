@@ -34,13 +34,15 @@ export const EventContainer = styled(CenterFlexContainer)`
 
 export const InfoWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  
+  width:100%;
+  flex-wrap:wrap;
   max-width: 1140px;
   padding: 14px 0;
 
   @media screen and (max-width: 768px) {
-    grid-template-areas: "'col1' 'col2'";
-    margin-top: 80px;
+    flex-direction: column-reverse;
+    
   }
 `;
 
@@ -50,22 +52,26 @@ export const Heading = styled.h1`
 
 export const Column1 = styled(CenterFlexContainer)`
   flex: 45%;
+  width: 100%;
   margin: 14px 28px;
 
   @media screen and (max-width: 768px) {
-    flex: 100%;
-    margin: auto;
-    max-width: 300px;
+    flex: 90%;
+    margin: 14px;
+    
   }
 `;
 export const Column2 = styled.div`
   flex: 40%;
+  width: 100%;
 
   margin: 14px 28px;
   border-radius: 12px;
   overflow: hidden;
   @media screen and (max-width: 768px) {
-    flex: 100%;
+    flex: 90%;
+    margin: 14px;
+
   }
 `;
 
@@ -187,12 +193,12 @@ export const ImgWrap = styled(CenterFlexContainer)`
 
 export const Img = styled.img`
   height: 100px;
-
+  
   object-fit: contain;
 `;
 
 export const Logo = styled.img`
-  height: 350px;
+  width:100%;
 
   object-fit: contain;
   @media screen and (max-width: 768px) {

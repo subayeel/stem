@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Section, MainContainer ,RoundedButton,} from "../Global";
+import { Section, MainContainer, RouteButton } from "../Global";
 import { Carousel } from "react-bootstrap";
 import Events from "./Events";
 
@@ -24,7 +24,6 @@ import {
   Column2,
   TextWrapper,
   Heading,
-  
 } from "./Home.elements";
 
 const Anjuman = () => {
@@ -35,7 +34,6 @@ const Anjuman = () => {
   useEffect(() => {
     gsap.fromTo(iconRef, { x: 1000, duration: 5 }, { x: 0, duration: 5 });
   }, []);
-
 
   function createFacilityCard(props) {
     function getIcon(iconName) {
@@ -87,6 +85,7 @@ const Anjuman = () => {
           backgroundPosition: "left bottom",
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
+          fontFamily: "Roboto",
         }}
       >
         <InfoWrapper>
@@ -100,7 +99,7 @@ const Anjuman = () => {
                 recognized as one of the premier educational organizations in
                 South India
               </Desc>
-              <RoundedButton to="/">Contact Us</RoundedButton>
+              <RouteButton to="/">Contact Us</RouteButton>
             </TextWrapper>
           </Column1>
           <Column2>

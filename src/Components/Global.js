@@ -2,12 +2,11 @@ import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-
 export const GlobalStyle = createGlobalStyle`
 
 body{
     background: #EFEFEF;
-    font-family: Marcellus SC;
+    font-family: Thedus;
     overflow-x: hidden;
     margin: 0;
     box-sizing: border-box;
@@ -38,7 +37,7 @@ export const Section = styled.section`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  overflow:hidden;
+  overflow: hidden;
 
   @media screen and (max-width: 768px) {
     min-height: 80vh;
@@ -55,16 +54,15 @@ export const OverLay = styled.div`
   }
   @media screen and (max-width: 768px) {
     > img {
-    height: 100vh;
-    
-  }
+      height: 100vh;
+    }
   }
 `;
 
-export const RoundedButton = styled(Link)`
-  display:flex;
-  justify-content: center;
+export const RouteButton = styled(Link)`
   padding: 8px 28px;
+  
+  font-family: Thedus Light;
   margin: 14px 0;
   background-color: #cd5623;
   text-decoration: none;
@@ -73,6 +71,29 @@ export const RoundedButton = styled(Link)`
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   color: white;
   border-radius: 24px;
+
+  font-size: 22px;
+
+  &:hover {
+    background-color: #cc5e2f;
+    color: #fff;
+    cursor: pointer;
+  }
+`;
+
+export const RoundedButton = styled.button`
+  display: flex;
+  justify-content: center;
+  padding: 12px 28px;
+  margin: 14px 0;
+  background-color: #cd5623;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  color: white;
+  border-radius: 24px;
+  line-height: 18px;
   &:hover {
     background-color: #cc5e2f;
     color: #fff;

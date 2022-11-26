@@ -51,9 +51,11 @@ export const NavbarItems = styled(Link)`
   text-decoration: none;
   padding: 5px 23px;
   color: #fff;
-  @media screen and (max-width: 768px) {
-    display: none;
+  @media screen and (max-width:768px) {
+    padding: 5px;
+
   }
+  
 `;
 
 export const ListContainer = styled(CenterFlexContainer)`
@@ -75,19 +77,24 @@ export const ListContainer = styled(CenterFlexContainer)`
 export const Title = styled.a`
   text-decoration: none;
   color: ${(props) => (props.isActive === "active" ? "#DE8721" : "#fff")};
+  @media screen and (max-width:768px) {
+    font-size:14px;
+  }
 `;
 
 export const Dots = styled.p`
   color: #aaa;
   margin: 0;
   line-height: 4px;
+  @media screen and (max-width:768px) {
+    display:none;
+  }
 `;
 
 //avatar
 export const AvatarContainer = styled(CenterFlexContainer)`
   margin: 20px 0;
-  height: 36px;
-  width:36px;
+  
   &:hover {
     cursor: pointer;
   }
@@ -118,7 +125,8 @@ export const AvatarImg = styled.img`
 
 //sidebar
 export const MobileIcon = styled(CenterFlexContainer)`
-  width: 36px;
+  width: 80px;
+  
   display: none;
   height: 100%;
 
@@ -138,7 +146,8 @@ export const BarsIcon = styled(FaBars)`
 
 export const HomeIcon = styled(FaHome)`
   color: ${(props) => (props.isHome ? "#CE7B1F" : "#fff")};
-
+  height:36px;
+ 
   &:hover {
     color: #ccc;
   }
@@ -163,14 +172,12 @@ export const CloseIcon = styled(FaTimes)`
 export const ProfileDropdown = styled.div`
   display: ${(props) => (props.state ? "block" : "none")};
   position: absolute;
-  padding-top: 7px;
-  right: 0;
   top: 80px;
   width: 240px;
   z-index: 12;
 
   /* margin-left: ${(props) => props.lmargin}; */
-  background-color: rgba(14, 14, 14, 0.8);
+  background-color: #0F1128;
 
   @media screen and (max-width: 768px) {
     right: 0;
@@ -187,7 +194,8 @@ export const NavDropDown = styled.span`
   align-items: center;
   margin: 0;
   padding: 0 1rem;
-  height: 100%;
+  height: 80px;
+  width: 80px;
   cursor: pointer;
   font-weight: ${(props) => props.state};
 
@@ -199,8 +207,10 @@ export const NavDropDown = styled.span`
   }
 `;
 
-export const DropdownItem = styled.div`
+export const DropdownItem = styled(Link)`
   width: 100%;
+  display:block;
+  text-decoration: none;
   border-bottom: 1px solid #eee;
   padding: 5px 7px;
   background-color: rgba(14, 14, 14, 0.2);
@@ -215,3 +225,10 @@ export const DropdownItem = styled.div`
     }
   }
 `;
+
+export const Logo = styled.img`
+height:36px;
+@media screen and (max-width:768px){
+  height:24px;
+}
+`

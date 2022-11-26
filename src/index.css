@@ -3,3 +3,15 @@
   src: local("MarcellusSC-Regular"),
     url(./Fonts/MarcellusSC-Regular.ttf) format("truetype");
 }
+
+@font-face {
+  font-family: "Thedus";
+  src: local("ThedusWideLight-Bold"),
+    url("./Fonts/ThedusWideLight-Bold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Thedus Light";
+  src: local("Thedus Wide Light Regular 300"),
+    url("./Fonts/Thedus Wide Light Regular 300.otf") format("truetype");
+}

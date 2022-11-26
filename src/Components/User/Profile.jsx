@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import QRCode from "qrcode";
+import styled from "styled-components";
 
 import { useAuth } from "../../Contexts/AuthContext";
-import { MainContainer, Section } from "../Global";
+import { MainContainer } from "../Global";
 
 import {
   MDBCol,
@@ -12,10 +13,14 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
 } from "mdb-react-ui-kit";
 
+export const FormValues = styled.p`
+  font-family: Thedus Light;
+  color: #6c757d;
+  font-size: 18px;
+  margin: 0;
+`;
 const Profile = () => {
   const [qrImgUrl, setQrUrl] = useState("");
   const { userEmail, name, collegeName, stemId } = useAuth();
@@ -70,7 +75,7 @@ const Profile = () => {
                     <MDBCardText>Full Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{name}</MDBCardText>
+                    <FormValues>{name}</FormValues>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -79,9 +84,7 @@ const Profile = () => {
                     <MDBCardText>E-mail</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      {userEmail}
-                    </MDBCardText>
+                    <FormValues>{userEmail}</FormValues>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -90,9 +93,7 @@ const Profile = () => {
                     <MDBCardText>College</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      {collegeName}
-                    </MDBCardText>
+                    <FormValues>{collegeName}</FormValues>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -101,7 +102,7 @@ const Profile = () => {
                     <MDBCardText>Stem Id</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{stemId}</MDBCardText>
+                    <FormValues>{stemId}</FormValues>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>

@@ -1,21 +1,20 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { CenterFlexContainer } from "../Global";
-import { NavbarElements, NavbarItems } from "./Navbar.elements";
+
 import ListItem from "./ListItem";
-import { FaTimes } from "react-icons/fa";
 
 export const MenuContainer = styled.div`
-  position: fixed;
   width: 100vw;
+  position: absolute;
   top: ${(props) => (props.isOpen ? "80px" : "-280px")};
-  
+  overflow: hidden;
   height: 200px;
   z-index: 10;
   background-color: rgba(14, 14, 14, 0.8);
-  transition: top 0.3s;
+  transition: all 0.5s cubic-bezier(0.6, 0.04, 0.24, 0.68);
 `;
 
 export const MenuWrapper = styled(CenterFlexContainer)`
@@ -40,11 +39,11 @@ export const IconContainer = styled(CenterFlexContainer)`
   }
 `;
 
-const Sidebar = ({ toggle, isOpen, menuRef }) => {
+function Sidebar({ toggle, isOpen }) {
   const location = useLocation();
 
   return (
-    <MenuContainer ref={menuRef} isOpen={isOpen}>
+    <MenuContainer isOpen={isOpen}>
       <MenuWrapper>
         <ModalHeader>
           <h1>Menu</h1>
@@ -62,6 +61,6 @@ const Sidebar = ({ toggle, isOpen, menuRef }) => {
       </MenuWrapper>
     </MenuContainer>
   );
-};
+}
 
 export default Sidebar;
