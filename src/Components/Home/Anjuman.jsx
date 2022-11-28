@@ -107,14 +107,18 @@ const Anjuman = () => {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="https://www.aitm.edu.in/wp-content/uploads/2019/07/career-guidance-pu.jpg"
-                  alt="First slide"
+                  src="https://firebasestorage.googleapis.com/v0/b/stem-c072c.appspot.com/o/principal.jpg?alt=media&token=6a1f8f96-96dd-4cb5-beda-94ae66307c06"
+                  alt="Principal Image"
+                  style={{objectFit:"cover"}}
                 />
                 <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
+                  <div style={{ background: "rgba(0,0,0,0.01)" }}>
+                    <h3 style={{ color: "#000" }}>Dr. Fazlur Rahman K</h3>
+                    <p style={{ color: "#000" }}>
+                      Principal and Head of Mechanical Engineering<br></br>
+                      kfrahman@anjuman.edu.in
+                    </p>
+                  </div>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>

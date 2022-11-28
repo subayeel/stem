@@ -34,15 +34,14 @@ export const EventContainer = styled(CenterFlexContainer)`
 
 export const InfoWrapper = styled.div`
   display: flex;
-  
-  width:100%;
-  flex-wrap:wrap;
+
+  width: 100%;
+  flex-wrap: wrap;
   max-width: 1140px;
   padding: 14px 0;
 
   @media screen and (max-width: 768px) {
     flex-direction: column-reverse;
-    
   }
 `;
 
@@ -58,7 +57,6 @@ export const Column1 = styled(CenterFlexContainer)`
   @media screen and (max-width: 768px) {
     flex: 90%;
     margin: 14px;
-    
   }
 `;
 export const Column2 = styled.div`
@@ -71,7 +69,6 @@ export const Column2 = styled.div`
   @media screen and (max-width: 768px) {
     flex: 90%;
     margin: 14px;
-
   }
 `;
 
@@ -123,17 +120,38 @@ export const EventCard = styled(CenterFlexContainer)`
   flex: 45%;
   width: 50%;
   height: 500px;
-
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   margin: 7px;
   padding: 25px;
-  color: ${(props) => (props.id === 2 || props.id === 3 ? "#000" : "#eee")};
-  background-color: ${(props) =>
-    props.id === 2 || props.id === 3 ? "#fff" : "rgb(15,17,40)"};
+  color: #eee;
+  background-color: rgb(15, 17, 40);
   flex-direction: column;
   text-align: center;
 
   transition: 0.2s ease-in-out;
+  &:hover::before {
+    opacity: 1;
+  }
 
+  &::before {
+    background: radial-gradient(
+      800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.1),
+      transparent 40%
+    );
+    content: "";
+    border-radius: 10px;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    top: 0px;
+    opacity: 0;
+    transition: opacity 500ms;
+  }
   &:hover {
     cursor: pointer;
     /* transform: scale(1.1); */
@@ -193,12 +211,12 @@ export const ImgWrap = styled(CenterFlexContainer)`
 
 export const Img = styled.img`
   height: 100px;
-  
+
   object-fit: contain;
 `;
 
 export const Logo = styled.img`
-  width:100%;
+  width: 100%;
 
   object-fit: contain;
   @media screen and (max-width: 768px) {

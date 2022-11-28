@@ -91,10 +91,10 @@ const Hero = () => {
             <TextWrapper>
               <Heading>STEM - 2022</Heading>
               <Desc>
-                STEM 2022, formerly known as Anjuman Engineering College, is the
-                prestigious unit of Anjuman Hami-e-Muslimeen, which manages 16
-                institutions, and is recognized as one of the premier
-                educational organizations in South India
+                STEM, Science Technology Engineering and Mathematics, is the
+                prestigious event organised annually by of Anjuman Institute of
+                Technology and Management, which engages the Pre-University
+                students from various colleges around Bhatkal.
               </Desc>
 
               {currentUser ? (

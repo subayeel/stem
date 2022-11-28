@@ -3,50 +3,45 @@ import { FaArrowRight } from "react-icons/fa";
 import { gsap } from "gsap";
 
 import { events } from "../../Data/events";
-import {RouteButton,} from "../Global";
+import { RouteButton } from "../Global";
 import {
   EventCard,
   Title,
   Desc,
   EventContainer,
-  
   ImgWrap,
   Img,
 } from "./Home.elements";
 
 const Events = () => {
-  let imgRef = useRef(null);
+  function handleOnMouseMove(e) {
+    const { currentTarget: target } = e;
 
-  useEffect(() => {
-    gsap.fromTo(imgRef, { duration: 2, x: 100 }, { duration: 2, x: 0 });
-  }, []);
+    const rect = target.getBoundingClientRect(),
+      x = e.clientX - rect.left,
+      y = e.clientY - rect.top;
+
+    target.style.setProperty("--mouse-x", `${x}px`);
+    target.style.setProperty("--mouse-y", `${y}px`);
+  }
+  const eCardRef = useRef();
+
   function createFacilityCard(props) {
-    function getIcon(iconName) {
-      if (iconName == "book") {
-        return "<BooksIcon />";
-      } else if (iconName == "sports") {
-        return "<SportsIcon />";
-      } else if (iconName == "teach") {
-        return "<TeacherIcon />";
-      } else if (iconName == "edu") {
-        return "<EduIcon />";
-      }
-    }
     return (
-      <EventCard id={props.eventId}>
-        <ImgWrap
-          ref={(el) => {
-            imgRef = el;
-          }}
-        >
+      <EventCard
+        onMouseMove={(e) => handleOnMouseMove(e)}
+        ref={eCardRef}
+        id={props.eventId}
+      >
+        <ImgWrap>
           <Img styled={{ height: "100px" }} src={props.imageUrl} alt="" />
         </ImgWrap>
         {/* <Title>{props.title}</Title> */}
-        <Desc style={{ maxWidth: "400px" }}>{props.desc}</Desc>
-        <RouteButton>
+        <Desc style={{ maxWidth: "400px" ,fontSize:"18px", fontWeight:"600" , letterSpacing:"2px"}}>{props.desc}</Desc>
+        {/* <RouteButton>
           Learn More
           <FaArrowRight style={{ marginLeft: "4px" }} />
-        </RouteButton>
+        </RouteButton> */}
       </EventCard>
     );
   }
