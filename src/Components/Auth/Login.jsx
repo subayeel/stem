@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Card, Alert } from "react-bootstrap";
 import { CenterFlexContainer, MainContainer, RoundedButton } from "../Global";
 
 import { useAuth } from "../../Contexts/AuthContext";

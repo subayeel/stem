@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 
 import { CenterFlexContainer } from "../Global";
 import { useAuth } from "../../Contexts/AuthContext";
@@ -50,7 +50,7 @@ export const MenuList = styled(CenterFlexContainer)`
 function Sidebar({ toggle, isOpen }) {
   const location = useLocation();
   
-  const { logout, currentUser } = useAuth();
+  const {  currentUser } = useAuth();
 
   return (
     <MenuContainer isOpen={isOpen}>

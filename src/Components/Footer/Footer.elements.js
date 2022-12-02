@@ -1,4 +1,4 @@
-import { CenterFlexContainer, MainContainer, MainWrapper } from "../Global";
+import { CenterFlexContainer, MainWrapper } from "../Global";
 import styled from "styled-components";
 import {
   FaYoutubeSquare,
@@ -80,7 +80,7 @@ export const FooterFacebookIcon = styled(FaFacebookSquare)`
     color: #cc5e2f;
 
     transition: 0.25s;
-    }
+  }
 
   @media screen and (max-width: 768px) {
     height: 32px;

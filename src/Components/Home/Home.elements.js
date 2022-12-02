@@ -6,7 +6,7 @@ import {
   FaChalkboardTeacher,
 } from "react-icons/fa";
 import { CenterFlexContainer } from "../Global";
-import { Link } from "react-router-dom";
+
 
 export const Content = styled(CenterFlexContainer)`
   position: absolute;

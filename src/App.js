@@ -6,15 +6,13 @@ import {
   Outlet,
   useLocation,
 } from "react-router-dom";
-import { useLayoutEffect, useState, useEffect, useRef } from "react";
+import { useLayoutEffect} from "react";
 import { GlobalStyle } from "./Components/Global";
 
 //auth imports
-import { onAuthStateChanged, getAuth } from "firebase/auth";
-import { app, db } from "./firebase";
 import { AuthProvider } from "./Contexts/AuthContext";
 
-import { collection, query, where, getDocs } from "firebase/firestore";
+
 
 //Components
 import Home from "./Components/Home/Home";
@@ -22,8 +20,6 @@ import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import LoginSection from "./Components/Auth/Login";
 import SignUp from "./Components/Auth/SignUp";
-import Sidebar from "./Components/Navbar/Sidebar";
-import MenuButton from "./Components/Navbar/MenuButton";
 import Profile from "./Components/User/Profile";
 
 function App() {

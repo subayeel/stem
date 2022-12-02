@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import MenuButton from "./MenuButton";
@@ -9,8 +9,7 @@ import {
   NavbarWrapper,
   NavbarElements,
   NavbarItems,
-  BarsIcon,
-  CloseIcon,
+  
   MobileIcon,
   LogoContainer,
   ProfileDropdown,
@@ -26,7 +25,7 @@ import { useAuth } from "../../Contexts/AuthContext";
 
 import ListItem from "./ListItem";
 import navlogo from "../../Images/nav-logo.png";
-import { gsap } from "gsap/all";
+
 
 export const Links = styled(Link)`
   text-decoration: none;

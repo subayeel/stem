@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CenterFlexContainer } from "../Global";
-import { FaAngleRight, FaBars, FaHome, FaTimes } from "react-icons/fa";
+import { FaBars, FaHome, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.nav`

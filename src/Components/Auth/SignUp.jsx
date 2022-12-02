@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
 
 //modal
 import Modal from "react-modal";
 import spinner from "../../Images/spinner.gif";
 import { MainWrapper, MainContainer, RoundedButton } from "../Global";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../../Contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -26,12 +26,12 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const initialValues = {
-    name: "",
-    collegeName: "",
-    phone: "",
-    stemId: "",
-  };
+  // const initialValues = {
+  //   name: "",
+  //   collegeName: "",
+  //   phone: "",
+  //   stemId: "",
+  // };
 
   const customStyles = {
     content: {
@@ -51,9 +51,7 @@ export default function SignUp() {
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   let subtitle;
-  function openModal() {
-    setIsOpen(true);
-  }
+  
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
@@ -66,8 +64,8 @@ export default function SignUp() {
 
   //handling form values
 
-  const [formValues, setFormValues] = useState(initialValues);
-  const [isOtherCollege, setIsOtherCollege] = useState(false);
+  // const [formValues, setFormValues] = useState(initialValues);
+  // const [isOtherCollege, setIsOtherCollege] = useState(false);
 
   // if (collegeNameRef.current.value === "other") {
   //   setIsOtherCollege(true);
@@ -83,7 +81,7 @@ export default function SignUp() {
 
     console.log("Got id");
     var id = docSnap.data().userId + 1;
-    const idRef = await setDoc(doc(db, "userId", "userId"), {
+    await setDoc(doc(db, "userId", "userId"), {
       userId: id,
     });
     console.log("Id incremented");
@@ -94,7 +92,7 @@ export default function SignUp() {
     try {
       var uid = await incrementSetUserId();
 
-      const docRef = await setDoc(doc(db, "userDetails", uid.toString()), {
+      await setDoc(doc(db, "userDetails", uid.toString()), {
         userEmail: emailRef.current.value.toLowerCase(),
         name: nameRef.current.value,
         phone: phoneRef.current.value,
@@ -126,7 +124,7 @@ export default function SignUp() {
       setError("");
       setIsOpen(true);
       setLoading(true);
-      const timeOut = setTimeout(registering, 5000);
+      setTimeout(registering, 5000);
       function registering() {
         setIsOpen(false);
       }
@@ -144,7 +142,7 @@ export default function SignUp() {
     setLoading(false);
   }
 
-  const [optField, setOptField] = useState(false);
+  
 
   return (
     <MainContainer style={{ margin: "94px auto 14px auto" }}>
@@ -170,7 +168,7 @@ export default function SignUp() {
               justifyContent: "center",
             }}
           >
-            <img src={spinner} />
+            <img src={spinner} alt="loading-icon"/>
           </div>
 
           <TextWrapper>

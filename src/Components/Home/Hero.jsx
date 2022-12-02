@@ -1,9 +1,9 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import styled from "styled-components";
 import { CenterFlexContainer, RouteButton } from "../Global";
 
-import { useNavigate, useLocation } from "react-router-dom";
-import { Heading2, ImgWrap } from "./Home.elements";
+
+import { ImgWrap } from "./Home.elements";
 import herobg from "../../Images/hero-bg.png";
 
 import { gsap } from "gsap/all";
@@ -62,8 +62,6 @@ export const SMobileLogo = styled.img`
 `;
 
 const Hero = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
   const { currentUser } = useAuth();
 
   let col1 = useRef(null);

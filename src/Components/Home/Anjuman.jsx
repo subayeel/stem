@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import React from "react";
+
 import { MainContainer, RouteButton } from "../Global";
 import { Carousel } from "react-bootstrap";
-import Events from "./Events";
 
 import aitmbg from "../../Images/aitm-bg.png";
 
@@ -18,7 +17,7 @@ import {
   Title,
   Desc,
   FacilitiesContainer,
-  Content,
+ 
   InfoWrapper,
   Column1,
   Column2,
@@ -27,46 +26,23 @@ import {
 } from "./Home.elements";
 
 const Anjuman = () => {
-  let titleRef = useRef(null);
-  let iconRef = useRef(null);
-  let descRef = useRef(null);
-
   function createFacilityCard(props) {
     function getIcon(iconName) {
-      if (iconName == "book") {
+      if (iconName === "book") {
         return <BooksIcon />;
-      } else if (iconName == "sports") {
+      } else if (iconName === "sports") {
         return <SportsIcon />;
-      } else if (iconName == "teach") {
+      } else if (iconName === "teach") {
         return <TeacherIcon />;
-      } else if (iconName == "edu") {
+      } else if (iconName === "edu") {
         return <EduIcon />;
       }
     }
     return (
       <Card key={props.key} id={props.key}>
-        <IconContainer
-          ref={(el) => {
-            iconRef = el;
-          }}
-        >
-          {getIcon(props.icon)}
-        </IconContainer>
-        <Title
-          ref={(el) => {
-            titleRef = el;
-          }}
-        >
-          {props.title}
-        </Title>
-        <Desc
-          ref={(el) => {
-            descRef = el;
-          }}
-          style={{ maxWidth: "400px" }}
-        >
-          {props.desc}
-        </Desc>
+        <IconContainer>{getIcon(props.icon)}</IconContainer>
+        <Title>{props.title}</Title>
+        <Desc style={{ maxWidth: "400px" }}>{props.desc}</Desc>
       </Card>
     );
   }
@@ -102,7 +78,7 @@ const Anjuman = () => {
                 <img
                   className="d-block w-100"
                   src="https://firebasestorage.googleapis.com/v0/b/stem-c072c.appspot.com/o/principal.jpg?alt=media&token=4526c426-b2ef-44c3-ad80-ecbcd3b3c934"
-                  alt="Principal Image"
+                  alt="Principal"
                   style={{ objectFit: "cover" }}
                 />
                 <Carousel.Caption

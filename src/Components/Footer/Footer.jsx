@@ -50,7 +50,7 @@ const Footer = () => {
         </TextWrap>
         <h4 style={{ color: "#CC5E2F" }}>Organised by:</h4>
         <ImgWrap>
-          <img height="80px" src={aitm} />
+          <img height="80px" src={aitm} alt="college logo"/>
         </ImgWrap>
         <TextWrap>
           <Desc>
