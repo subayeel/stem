@@ -15,3 +15,31 @@
   src: local("Thedus Wide Light Regular 300"),
     url("./Fonts/Thedus Wide Light Regular 300.otf") format("truetype");
 }
+
+.principal-title:hover{
+  transform: scale(1.1);
+  transition: all 0.2s ease-in;
+  color: white;
+  
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #193152;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0F1128;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #CC5E2F;
+}
+

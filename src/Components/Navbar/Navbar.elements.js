@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const NavbarContainer = styled.nav`
   margin: 0 auto;
-  background-color: rgb(15,17,40);
+  background-color: rgb(15, 17, 40);
   position: fixed;
   width: 100%;
   transition: top 0.3s;
@@ -22,7 +22,7 @@ export const NavbarWrapper = styled(CenterFlexContainer)`
   margin: 0 auto;
   /* padding: 0 15px; */
   @media screen and (max-width: 768px) {
-    margin: 0 14px;
+    margin: 0 7px;
   }
 `;
 
@@ -30,7 +30,7 @@ export const LogoContainer = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -51,11 +51,9 @@ export const NavbarItems = styled(Link)`
   text-decoration: none;
   padding: 5px 23px;
   color: #fff;
-  @media screen and (max-width:768px) {
+  @media screen and (max-width: 768px) {
     padding: 5px;
-
   }
-  
 `;
 
 export const ListContainer = styled(CenterFlexContainer)`
@@ -72,13 +70,18 @@ export const ListContainer = styled(CenterFlexContainer)`
       color: #fff;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    
+    justify-content: space-around;
+  }
 `;
 
 export const Title = styled.a`
   text-decoration: none;
   color: ${(props) => (props.isActive === "active" ? "#DE8721" : "#fff")};
-  @media screen and (max-width:768px) {
-    font-size:14px;
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
   }
 `;
 
@@ -86,15 +89,15 @@ export const Dots = styled.p`
   color: #aaa;
   margin: 0;
   line-height: 4px;
-  @media screen and (max-width:768px) {
-    display:none;
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
 //avatar
 export const AvatarContainer = styled(CenterFlexContainer)`
   margin: 20px 0;
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -125,8 +128,8 @@ export const AvatarImg = styled.img`
 
 //sidebar
 export const MobileIcon = styled(CenterFlexContainer)`
-  width: 80px;
-  
+  width: 70px;
+
   display: none;
   height: 100%;
 
@@ -134,6 +137,8 @@ export const MobileIcon = styled(CenterFlexContainer)`
     display: flex;
     font-size: 25px;
     cursor: pointer;
+    width: 36px;
+    margin-right: 30px;
   }
 `;
 
@@ -145,9 +150,9 @@ export const BarsIcon = styled(FaBars)`
 `;
 
 export const HomeIcon = styled(FaHome)`
-  color: ${(props) => (props.isHome ? "#CE7B1F" : "#fff")};
-  height:36px;
- 
+  color: ${(props) => (props.ishome ? "#CE7B1F" : "#fff")};
+  height: 36px;
+
   &:hover {
     color: #ccc;
   }
@@ -177,7 +182,7 @@ export const ProfileDropdown = styled.div`
   z-index: 12;
 
   /* margin-left: ${(props) => props.lmargin}; */
-  background-color: #0F1128;
+  background-color: #0f1128;
 
   @media screen and (max-width: 768px) {
     right: 0;
@@ -204,12 +209,14 @@ export const NavDropDown = styled.span`
   }
   @media screen and (max-width: 768px) {
     padding: 0;
+    height: 80px;
+    width: 36px;
   }
 `;
 
 export const DropdownItem = styled(Link)`
   width: 100%;
-  display:block;
+  display: block;
   text-decoration: none;
   border-bottom: 1px solid #eee;
   padding: 5px 7px;
@@ -217,7 +224,7 @@ export const DropdownItem = styled(Link)`
   color: #eee;
   &:hover {
     cursor: pointer;
-    background-color: rgba(14, 14, 14, 1);
+    background-color: #cc5e2f;
     color: #eee;
 
     > a {
@@ -227,8 +234,8 @@ export const DropdownItem = styled(Link)`
 `;
 
 export const Logo = styled.img`
-height:36px;
-@media screen and (max-width:768px){
-  height:24px;
-}
-`
+  height: 36px;
+  @media screen and (max-width: 768px) {
+    height: 24px;
+  }
+`;

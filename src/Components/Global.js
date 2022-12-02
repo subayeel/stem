@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {  FaTimes } from "react-icons/fa";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -60,8 +61,9 @@ export const OverLay = styled.div`
 `;
 
 export const RouteButton = styled(Link)`
-  padding: 8px 28px;
-  
+      padding: 12px 22px;
+  width: fit-content;
+  z-index: 12;
   font-family: Thedus Light;
   margin: 14px 0;
   background-color: #cd5623;
@@ -78,6 +80,11 @@ export const RouteButton = styled(Link)`
     background-color: #cc5e2f;
     color: #fff;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+    padding: 12px 22px;
   }
 `;
 
@@ -97,6 +104,15 @@ export const RoundedButton = styled.button`
   &:hover {
     background-color: #cc5e2f;
     color: #fff;
+    cursor: pointer;
+  }
+`;
+export const CloseIcon = styled(FaTimes)`
+  color: #fff;
+  height: 40px;
+  margin: auto;
+  &:hover{
+    color: #cc5e2f;
     cursor: pointer;
   }
 `;

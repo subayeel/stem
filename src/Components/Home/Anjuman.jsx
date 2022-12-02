@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Section, MainContainer, RouteButton } from "../Global";
+import { MainContainer, RouteButton } from "../Global";
 import { Carousel } from "react-bootstrap";
 import Events from "./Events";
 
@@ -31,10 +31,6 @@ const Anjuman = () => {
   let iconRef = useRef(null);
   let descRef = useRef(null);
 
-  useEffect(() => {
-    gsap.fromTo(iconRef, { x: 1000, duration: 5 }, { x: 0, duration: 5 });
-  }, []);
-
   function createFacilityCard(props) {
     function getIcon(iconName) {
       if (iconName == "book") {
@@ -48,7 +44,7 @@ const Anjuman = () => {
       }
     }
     return (
-      <Card id={props.key}>
+      <Card key={props.key} id={props.key}>
         <IconContainer
           ref={(el) => {
             iconRef = el;
@@ -77,8 +73,6 @@ const Anjuman = () => {
 
   return (
     <>
-      <Events />
-
       <MainContainer
         style={{
           backgroundImage: `url(${aitmbg})`,
@@ -103,18 +97,23 @@ const Anjuman = () => {
             </TextWrapper>
           </Column1>
           <Column2>
-            <Carousel>
+            <Carousel style={{ width: "100%" }}>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="https://firebasestorage.googleapis.com/v0/b/stem-c072c.appspot.com/o/principal.jpg?alt=media&token=6a1f8f96-96dd-4cb5-beda-94ae66307c06"
+                  src="https://firebasestorage.googleapis.com/v0/b/stem-c072c.appspot.com/o/principal.jpg?alt=media&token=4526c426-b2ef-44c3-ad80-ecbcd3b3c934"
                   alt="Principal Image"
-                  style={{objectFit:"cover"}}
+                  style={{ objectFit: "cover" }}
                 />
-                <Carousel.Caption>
-                  <div style={{ background: "rgba(0,0,0,0.01)" }}>
-                    <h3 style={{ color: "#000" }}>Dr. Fazlur Rahman K</h3>
-                    <p style={{ color: "#000" }}>
+                <Carousel.Caption
+                  style={{
+                    background: "rgba(0,0,0,0.2)",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <div className="principal-title">
+                    <h3>Dr. Fazlur Rahman K</h3>
+                    <p>
                       Principal and Head of Mechanical Engineering<br></br>
                       kfrahman@anjuman.edu.in
                     </p>
@@ -124,31 +123,31 @@ const Anjuman = () => {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="https://www.aitm.edu.in/wp-content/uploads/2019/07/career-guidance-pu.jpg"
-                  alt="Second slide"
+                  src="https://firebasestorage.googleapis.com/v0/b/stem-c072c.appspot.com/o/placement2023.jpeg?alt=media&token=dec3c636-921e-4e9f-8633-ae3671498b97"
+                  alt="Placement pic"
                 />
 
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
+                {/* <Carousel.Caption>
+                  <h3>November 2022 - Placement</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Total 8 students of AITM got placed in the month of
+                    November.
                   </p>
-                </Carousel.Caption>
+                </Carousel.Caption> */}
               </Carousel.Item>
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="https://www.aitm.edu.in/wp-content/uploads/2019/07/career-guidance-pu.jpg"
-                  alt="Third slide"
+                  src="https://firebasestorage.googleapis.com/v0/b/stem-c072c.appspot.com/o/placement2.jpeg?alt=media&token=e808aac7-23bf-4a9e-a390-d775cc73724d"
+                  alt="Placement November"
                 />
-
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>
-                    Praesent commodo cursus magna, vel scelerisque nisl
-                    consectetur.
-                  </p>
-                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src="https://firebasestorage.googleapis.com/v0/b/stem-c072c.appspot.com/o/placement3.jpeg?alt=media&token=cff62883-bbcc-40ad-886e-c15d8d5e2af1"
+                  alt="Placement November"
+                />
               </Carousel.Item>
             </Carousel>
           </Column2>

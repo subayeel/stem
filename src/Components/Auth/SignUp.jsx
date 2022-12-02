@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
+//modal
+import Modal from "react-modal";
+import spinner from "../../Images/spinner.gif";
 import { MainWrapper, MainContainer, RoundedButton } from "../Global";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../../Contexts/AuthContext";
@@ -8,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 //firestore
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import { TextWrapper } from "../Home/Home.elements";
 
 export default function SignUp() {
   const emailRef = useRef();
@@ -29,6 +33,37 @@ export default function SignUp() {
     stemId: "",
   };
 
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      color: "#0F1128",
+      backgroundColor: "#fff",
+      overflow: "hidden",
+    },
+  };
+
+  Modal.setAppElement("#root");
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  let subtitle;
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   //handling form values
 
   const [formValues, setFormValues] = useState(initialValues);
@@ -40,40 +75,35 @@ export default function SignUp() {
   //   setIsOtherCollege(false);
   // }
 
-  const [uid, setUid] = useState();
+  // const [uid, setUid] = useState();
 
-  async function getUserId() {
+  async function incrementSetUserId() {
     const docRef = doc(db, "userId", "userId");
     const docSnap = await getDoc(docRef);
-    setUid(docSnap.data().userId);
-    console.log("Got id");
-  }
 
-  async function incrementSetUserId(newId) {
-    var id = newId + 1;
+    console.log("Got id");
+    var id = docSnap.data().userId + 1;
     const idRef = await setDoc(doc(db, "userId", "userId"), {
       userId: id,
     });
-    setUid(id);
     console.log("Id incremented");
+    return id;
   }
-  useEffect(() => {
-    getUserId();
-  }, []);
 
   const uploadUserDetails = async (email) => {
     try {
-      incrementSetUserId(uid);
+      var uid = await incrementSetUserId();
 
-      const docRef = await setDoc(doc(db, "userDetails", email.toLowerCase()), {
+      const docRef = await setDoc(doc(db, "userDetails", uid.toString()), {
         userEmail: emailRef.current.value.toLowerCase(),
         name: nameRef.current.value,
         phone: phoneRef.current.value,
         collegeName: collegeNameRef.current.value,
         otherCollege: collegeOtherRef.current.value,
-        stemId: "STEM22 - " + uid,
+        stemId: "STEM22 - " + uid.toString(),
       });
       console.log("Document written");
+      navigate("/stem");
 
       //TO DO: navigate auth success page
     } catch (error) {
@@ -88,33 +118,79 @@ export default function SignUp() {
       return setError("Passwords do not match");
     } else if (phoneRef.current.value.length !== 10) {
       return setError("Invalid Mobile number");
+    } else if (collegeNameRef.current.value === "Select College") {
+      return setError("Please choose College Name");
     }
 
     try {
       setError("");
+      setIsOpen(true);
       setLoading(true);
+      const timeOut = setTimeout(registering, 5000);
+      function registering() {
+        setIsOpen(false);
+      }
 
       await signup(
         emailRef.current.value.toLowerCase(),
         passwordRef.current.value.toLowerCase()
       );
       uploadUserDetails(emailRef.current.value);
-      navigate("/stem");
     } catch (e) {
       console.log(e);
-      setError("Failed to create an account");
+      setError(e.toString().slice(24,));
     }
 
     setLoading(false);
   }
 
+  const [optField, setOptField] = useState(false);
+
   return (
     <MainContainer style={{ margin: "94px auto 14px auto" }}>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div
+          style={{
+            overflow: "hidden",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
+          <div
+            style={{
+              margin: "auto",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <img src={spinner} />
+          </div>
+
+          <TextWrapper>
+            <h2>Save the Date 10th December 2022!</h2>
+            <h5>Remainder</h5>
+            <ul>
+              <li>College Id Cards are Mandatory</li>
+              <li>Registeration Compulsory for participation in Events.</li>
+            </ul>
+          </TextWrapper>
+          <RoundedButton disabled onClick={closeModal}>
+            Redirecting...
+          </RoundedButton>
+        </div>
+      </Modal>
       <MainWrapper>
         <Card>
           <Card.Body className="mb-2">
             <h2 className="text-center mb-4">Sign Up</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
+            
             <Form onSubmit={handleSubmit}>
               <Form.Group id="name" className="mt-2">
                 <Form.Label>Full Name</Form.Label>
@@ -125,6 +201,35 @@ export default function SignUp() {
                 <Form.Select type="select" ref={collegeNameRef} required>
                   <option disabled selected>
                     Select College
+                  </option>
+                  <option
+                    style={{ borderBottom: "2px", marginBottom: "4px" }}
+                    value=""
+                    disabled
+                  >
+                    {" "}
+                    Bhatkal
+                  </option>
+                  <option value="Anjuman Boys PU College">
+                    Anjuman Boys PU College
+                  </option>
+                  <option value="Govt PU College Bhatkal">
+                    Govt PU College Bhatkal
+                  </option>
+                  <option value="Anjuman Womens PU College">
+                    Anjuman Womens PU College
+                  </option>
+                  <option value="Anand Ashram Composite PU College">
+                    Anand Ashram Composite PU College
+                  </option>
+                  <option value="Siddharta PU College">
+                    Siddharta PU College
+                  </option>
+                  <option value="The New English PU College">
+                    The New English PU College
+                  </option>
+                  <option value="National PU College ">
+                    National PU College{" "}
                   </option>
                   <option
                     disabled
@@ -168,8 +273,10 @@ export default function SignUp() {
                   </option>
 
                   <option value="RNS PU College">RNS PU College</option>
-                  <option value="RNS Diploma">RNS Diploma</option>
-                  <option value="BinaVidya PU">BinaVidya PU</option>
+                  <option value="RNS Polythinic">RNS Polythinic</option>
+                  <option value="Beena Vaidya PU College">
+                    Beena Vaidya PU College
+                  </option>
                   <option value="Govt College Honavar">
                     Govt College Honavar
                   </option>
@@ -209,7 +316,7 @@ export default function SignUp() {
                   <option value="Govt Mohan K Shetty PU College Honavar">
                     Govt Mohan K Shetty PU College Honavar
                   </option>
-                  <option value="Sri Shurdamba PU College Honavar">
+                  <option value="Sri Shardamba  PU College Honavar">
                     Sri Shurdamba PU College Honavar
                   </option>
                   <option value="Canara Excellence PU College Kumta">
@@ -246,40 +353,13 @@ export default function SignUp() {
                     Govt MHN PU College Sirsi
                   </option>
 
-                  <option
-                    style={{ borderBottom: "2px", marginBottom: "4px" }}
-                    value=""
-                    disabled
-                  >
-                    {" "}
-                    Bhatkal
-                  </option>
-                  <option value="Anjuman Boys PU College">
-                    Anjuman Boys PU College
-                  </option>
-                  <option value="Anjuman Womens PU College">
-                    Anjuman Womens PU College
-                  </option>
-                  <option value="Anand Ashram Composite PU College">
-                    Anand Ashram Composite PU College
-                  </option>
-                  <option value="Siddharta PU College">
-                    Siddharta PU College
-                  </option>
-                  <option value="Suddindhra PU College">
-                    Suddindhra PU College
-                  </option>
-                  <option value="National PU College ">
-                    National PU College{" "}
-                  </option>
                   <option value="other">Other</option>
                 </Form.Select>
               </Form.Group>
 
               <Form.Group id="otherCollege" className="mt-2">
-                <Form.Control 
-                
-                  placeholder="Other?, College name (optional)"
+                <Form.Control
+                  placeholder="If Other? Enter college name"
                   ref={collegeOtherRef}
                 />
               </Form.Group>
@@ -304,6 +384,7 @@ export default function SignUp() {
                   required
                 />
               </Form.Group>
+              {error && <Alert variant="danger">{error}</Alert>}
 
               <RoundedButton
                 disabled={loading}

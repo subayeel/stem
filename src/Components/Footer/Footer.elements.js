@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {
   FaYoutubeSquare,
   FaInstagramSquare,
-  FaTwitterSquare,
+  FaLinkedin,
   FaFacebookSquare,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -31,23 +31,23 @@ export const FooterYoutubeIcon = styled(FaYoutubeSquare)`
   &:hover {
     cursor: pointer;
     transition: 0.25s;
-    transform: scale(1.6, 1.6);
+    color: #cc5e2f;
   }
   @media screen and (max-width: 768px) {
     height: 32px;
     width: 32px;
   }
 `;
-export const FooterTwitterIcon = styled(FaTwitterSquare)`
+export const FooterLinkedInIcon = styled(FaLinkedin)`
   height: 20px;
   width: 20px;
   margin: 0 0 0 20px;
   color: white;
   &:hover {
     cursor: pointer;
+    color: #cc5e2f;
 
     transition: 0.25s;
-    transform: scale(1.6, 1.6);
   }
   @media screen and (max-width: 768px) {
     height: 32px;
@@ -61,9 +61,9 @@ export const FooterInstagramIcon = styled(FaInstagramSquare)`
   color: white;
   &:hover {
     cursor: pointer;
+    color: #cc5e2f;
 
     transition: 0.25s;
-    transform: scale(1.6, 1.6);
   }
   @media screen and (max-width: 768px) {
     height: 32px;
@@ -77,10 +77,10 @@ export const FooterFacebookIcon = styled(FaFacebookSquare)`
   color: white;
   &:hover {
     cursor: pointer;
+    color: #cc5e2f;
 
     transition: 0.25s;
-    transform: scale(1.6, 1.6);
-  }
+    }
 
   @media screen and (max-width: 768px) {
     height: 32px;
@@ -108,7 +108,7 @@ export const Column = styled.div`
   }
 `;
 
-export const TextWrap = styled.p`
+export const TextWrap = styled.div`
   margin: 0 7px;
   display: flex;
 `;
@@ -122,12 +122,22 @@ export const Desc = styled.p`
   line-height: 16px;
   text-align: center;
   color: #ececec;
+  font-family: Thedus Light;
 `;
 
 export const Links = styled(Link)`
   color: #ececec;
   text-decoration: none;
   &:hover {
-    color: #fff;  
+    color: #fff;
+  }
+`;
+
+export const ExternalLink = styled.a`
+  text-decoration: none;
+  color: #ececec;
+  text-decoration: none;
+  &:hover {
+    color: #cc5e2f;
   }
 `;

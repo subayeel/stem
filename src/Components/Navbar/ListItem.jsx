@@ -1,10 +1,16 @@
 import React from "react";
 import { ListContainer, Title, Dots } from "./Navbar.elements";
+import { useNavigate } from "react-router-dom";
 
-const ListItem = ({title,isActive}) => {
+const ListItem = ({ clickRoute, title, isActive }) => {
+  const navigate = useNavigate();
   return (
     <>
-      <ListContainer>
+      <ListContainer
+        onClick={() => {
+          navigate(clickRoute);
+        }}
+      >
         <Title isActive={isActive}>{title}</Title>
         <Dots>...</Dots>
       </ListContainer>

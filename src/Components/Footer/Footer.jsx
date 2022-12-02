@@ -4,7 +4,7 @@ import aitm from "../../Images/aitm.png";
 import {
   FooterFacebookIcon,
   FooterInstagramIcon,
-  FooterTwitterIcon,
+  FooterLinkedInIcon,
   FooterYoutubeIcon,
   Row,
   TextWrap,
@@ -13,6 +13,7 @@ import {
   FooterContainer,
   FooterWrapper,
   Links,
+  ExternalLink,
 } from "./Footer.elements";
 
 const Footer = () => {
@@ -21,24 +22,33 @@ const Footer = () => {
       <FooterWrapper>
         <Row justify="space-between">
           <div className="m-4">
-            <Links to="/">Contact us </Links>
-            <Links>|</Links> <Links to="/">Forum</Links>
+            <ExternalLink href="">Contact us </ExternalLink>
+            <Links>|</Links> <ExternalLink href="">Forum</ExternalLink>
           </div>
           <div className="m-4">
-            <FooterFacebookIcon />
-            <FooterInstagramIcon />
-            <FooterTwitterIcon />
-            <FooterYoutubeIcon />
+            <a href="https://www.facebook.com/anjumanitm/">
+              <FooterFacebookIcon />
+            </a>
+            <a href="https://www.instagram.com/anjumanitm/">
+              <FooterInstagramIcon />
+            </a>
+            <a href="https://www.linkedin.com/school/anjumanitm/">
+              <FooterLinkedInIcon />
+            </a>
+            <a href="https://www.youtube.com/c/AITMBhatkal">
+              <FooterYoutubeIcon />
+            </a>
           </div>
         </Row>
         <TextWrap>
           <Desc>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam,
-            accusamus illo ea earum distinctio sint ullam illum harum porro
-            perferendis!
+            STEM, Science Technology Engineering and Mathematics, is the
+            prestigious event organised annually by of Anjuman Institute of
+            Technology and Management, which engages the Pre-University students
+            from various colleges around Bhatkal.
           </Desc>
         </TextWrap>
-        <h4>Organised by:</h4>
+        <h4 style={{ color: "#CC5E2F" }}>Organised by:</h4>
         <ImgWrap>
           <img height="80px" src={aitm} />
         </ImgWrap>

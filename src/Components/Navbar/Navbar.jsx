@@ -35,7 +35,7 @@ export const Links = styled(Link)`
     color: #c57d1b;
   }
 `;
-function Navbar({  isAdmin }) {
+function Navbar({ isAdmin }) {
   const location = useLocation();
   const { logout, currentUser } = useAuth();
   const navigate = useNavigate();
@@ -59,7 +59,7 @@ function Navbar({  isAdmin }) {
     } else if (prevScrollpos <= currentScrollPos && currentScrollPos >= 700) {
       navbar.current.style.top = "-80px";
     }
-   
+
     prevScrollpos = currentScrollPos;
   };
   return (
@@ -73,7 +73,7 @@ function Navbar({  isAdmin }) {
               navigate("/stem");
             }}
           >
-            <HomeIcon isHome={location.pathname === "/stem" ? "active" : ""} />
+            <HomeIcon ishome={location.pathname === "/stem" ? "active" : ""} />
           </MobileIcon>
           <LogoContainer to="/stem">
             <Logo src={navlogo} alt="logo"></Logo>
@@ -107,7 +107,13 @@ function Navbar({  isAdmin }) {
                   onMouseLeave={() => setProfileDropDown(false)}
                 >
                   <DropdownItem to="/stem/profile">Profile</DropdownItem>
-                  <DropdownItem onClick={logout}>Logout</DropdownItem>
+                  <DropdownItem
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    Logout
+                  </DropdownItem>
                 </ProfileDropdown>
               </>
             ) : (
