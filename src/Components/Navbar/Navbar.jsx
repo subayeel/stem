@@ -34,9 +34,9 @@ export const Links = styled(Link)`
     color: #c57d1b;
   }
 `;
-function Navbar({ isAdmin }) {
+function Navbar() {
   const location = useLocation();
-  const { logout, currentUser } = useAuth();
+  const { logout, currentUser,isAdmin } = useAuth();
   const navigate = useNavigate();
 
   const [profileDropdown, setProfileDropDown] = useState(false);
@@ -129,7 +129,7 @@ function Navbar({ isAdmin }) {
             )}
             {isAdmin ? (
               <>
-                <NavbarItems to="/stem/login">
+                <NavbarItems to="/stem/admin">
                   <ListItem
                     title="Admin"
                     isActive={

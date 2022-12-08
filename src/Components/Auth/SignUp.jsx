@@ -1,4 +1,4 @@
-import React, {  useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 //modal
 import Modal from "react-modal";
@@ -11,11 +11,15 @@ import { Link, useNavigate } from "react-router-dom";
 //firestore
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+
+//styled-components
 import { TextWrapper } from "../Home/Home.elements";
 
 export default function SignUp() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const dishRef = useRef();
+
   const passwordConfirmRef = useRef();
   const collegeNameRef = useRef();
   const nameRef = useRef();
@@ -51,7 +55,6 @@ export default function SignUp() {
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
   let subtitle;
-  
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
@@ -75,6 +78,24 @@ export default function SignUp() {
 
   // const [uid, setUid] = useState();
 
+  const initialCheckValues = {
+    scavimaina: "no",
+    technophilia: "no",
+    enunciate: "no",
+    modalExpo: "no",
+  };
+
+  const [selectedEvents, setSelectedEvent] = useState(initialCheckValues);
+  //function to handle check
+  const handleEventsCheck = (e) => {
+    const { name, value } = e.target;
+    if (e.target.checked === true) {
+      setSelectedEvent({ ...selectedEvents, [name]: "yes" });
+    } else {
+      setSelectedEvent({ ...selectedEvents, [name]: "no" });
+    }
+  };
+
   async function incrementSetUserId() {
     const docRef = doc(db, "userId", "userId");
     const docSnap = await getDoc(docRef);
@@ -92,12 +113,17 @@ export default function SignUp() {
     try {
       var uid = await incrementSetUserId();
 
-      await setDoc(doc(db, "userDetails", uid.toString()), {
+      await setDoc(doc(db, "userDetails", email), {
         userEmail: emailRef.current.value.toLowerCase(),
         name: nameRef.current.value,
         phone: phoneRef.current.value,
         collegeName: collegeNameRef.current.value,
         otherCollege: collegeOtherRef.current.value,
+        scavimaina: selectedEvents.scavimaina,
+        technophilia: selectedEvents.technophilia,
+        enunciate: selectedEvents.enunciate,
+        modalExpo: selectedEvents.modalExpo,
+        dishType: dishRef.current.value,
         stemId: "STEM22 - " + uid.toString(),
       });
       console.log("Document written");
@@ -136,13 +162,11 @@ export default function SignUp() {
       uploadUserDetails(emailRef.current.value);
     } catch (e) {
       console.log(e);
-      setError(e.toString().slice(24,));
+      setError(e.toString().slice(24));
     }
 
     setLoading(false);
   }
-
-  
 
   return (
     <MainContainer style={{ margin: "94px auto 14px auto" }}>
@@ -168,7 +192,7 @@ export default function SignUp() {
               justifyContent: "center",
             }}
           >
-            <img src={spinner} alt="loading-icon"/>
+            <img src={spinner} alt="loading-icon" />
           </div>
 
           <TextWrapper>
@@ -184,17 +208,18 @@ export default function SignUp() {
           </RoundedButton>
         </div>
       </Modal>
+
       <MainWrapper>
         <Card>
           <Card.Body className="mb-2">
             <h2 className="text-center mb-4">Sign Up</h2>
-            
+
             <Form onSubmit={handleSubmit}>
               <Form.Group id="name" className="mt-2">
                 <Form.Label>Full Name</Form.Label>
                 <Form.Control type="name" ref={nameRef} required />
               </Form.Group>
-              <Form.Group id="collegeName" className="mt-2">
+              <Form.Group id="collegeName" className="mt-4">
                 <Form.Label>College Name</Form.Label>
                 <Form.Select type="select" ref={collegeNameRef} required>
                   <option disabled selected>
@@ -362,15 +387,58 @@ export default function SignUp() {
                 />
               </Form.Group>
 
-              <Form.Group id="email" className="mt-2">
+              <div>
+                <p className="mt-4 mb-0">Which is your favorite event?</p>
+                <Form.Check
+                  type="switch"
+                  id="custom-switch1"
+                  label="Scavimaina"
+                  name="scavimaina"
+                  onChange={handleEventsCheck}
+                />
+
+                <Form.Check
+                  type="switch"
+                  id="custom-switc2"
+                  label="Technophilia"
+                  name="technophilia"
+                  onChange={handleEventsCheck}
+                />
+                <Form.Check
+                  type="switch"
+                  id="custom-switch3"
+                  label="Enunciate"
+                  name="enunciate"
+                  onChange={handleEventsCheck}
+                />
+                <Form.Check
+                  type="switch"
+                  id="custom-switch4"
+                  label="Model Expo"
+                  name="modelExpo"
+                  onChange={handleEventsCheck}
+                />
+              </div>
+
+              <Form.Group id="email" className="mt-4">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" ref={emailRef} required />
               </Form.Group>
-              <Form.Group id="phone" className="mt-2">
+              <Form.Group className="mt-4">
+                <Form.Label>Select Dish preference</Form.Label>
+                <Form.Select ref={dishRef}>
+                  <option value="" disabled>
+                    Select Dish preference
+                  </option>
+                  <option value="Non-Veg">Non-Veg</option>
+                  <option value="Veg">Veg</option>
+                </Form.Select>
+              </Form.Group>
+              <Form.Group id="phone" className="mt-4">
                 <Form.Label>Mobile No.</Form.Label>
                 <Form.Control type="tel" ref={phoneRef} required />
               </Form.Group>
-              <Form.Group id="password" className="mt-2">
+              <Form.Group id="password" className="mt-4">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" ref={passwordRef} required />
               </Form.Group>

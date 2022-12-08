@@ -21,6 +21,7 @@ import Footer from "./Components/Footer/Footer";
 import LoginSection from "./Components/Auth/Login";
 import SignUp from "./Components/Auth/SignUp";
 import Profile from "./Components/User/Profile";
+import AdminPage from "./Components/Admin/AdminPage";
 
 function App() {
   
@@ -60,10 +61,11 @@ function App() {
 
             <Routes>
               <Route path="/stem" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/stem/register" element={<SignUp />} />
               <Route path="/stem/login" element={<LoginSection />} />
-              <Route path="/stem/event/:event" element={<Home />} />
-              <Route path="/stem/profile/:id" element={<Home />} />
+              <Route path="/stem/admin" element={<AdminPage />} />
+              
               <Route path="/stem/profile" element={<Profile />} />
             </Routes>
             <Outlet />

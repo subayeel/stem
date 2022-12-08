@@ -62,7 +62,7 @@ export const ListContainer = styled(CenterFlexContainer)`
   &:hover {
     cursor: pointer;
     transition: 1s;
-    a {
+    span {
       cursor: pointer;
       color: #ce7d1e;
     }
@@ -72,13 +72,13 @@ export const ListContainer = styled(CenterFlexContainer)`
   }
 
   @media screen and (max-width: 768px) {
-    
     justify-content: space-around;
   }
 `;
 
-export const Title = styled.a`
+export const Title = styled.span`
   text-decoration: none;
+  margin: 0;
   color: ${(props) => (props.isActive === "active" ? "#DE8721" : "#fff")};
   @media screen and (max-width: 768px) {
     font-size: 14px;
